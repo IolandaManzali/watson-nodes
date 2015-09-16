@@ -65,7 +65,7 @@ The first part of the flow will take text input from a web invocation and return
 
 1. Create a new flow, let's call it `TTS Web` 
 2. Add an `HTTP input` node to collect the incoming speech request. Set the `URL` property of this node to `/tts/sayit` This URL will be exposed below our BlueMix main URL.
-![ScreenShot](https://github.com/NodeREDWatson/Watson-Node-Red-Samples/blob/master/images/TTS/TTS-Lab-1.png)
+![TTS Lab 1 ScreenShot](images/TTS/TTS-Lab-1.png)
 When invoked with query parameters such as `?text_to_say=Hello`, they will be added as properties on the `msg` object. 
 3. Add a `Switch` node to extract the query parameter and set it as the payload. The TTS node uses the text in the `msg.payload` as input.
 4. Now add a `Watson TTS` node. This node will generate the binary `wav` stream content to the `msg.speech` property.
