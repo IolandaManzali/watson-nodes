@@ -34,11 +34,11 @@ DESCRIBE THAT
 
 Note that Node-RED in BlueMix will behave slightly differently than Node-RED stand-alone:
 
-1. The set of nodes available is different, BlueMix has extra nodes for DB access, but does not expose the `File` nodes.
- 2. Node-RED in bluemix stores its persistent data (flows, libraries, credentials) in the co-installed Cloudant database named
+1. The sets of available nodes differ, BlueMix has extra nodes for DB access, but does not expose the `File` nodes.
+2. Node-RED in bluemix stores its persistent data (flows, libraries, credentials) in the co-installed Cloudant database named
 `nodered`. When using a Cloudant node with Node-RED on BlueMix, the list of available instances is automatically listed.
- 3. Node-RED in BlueMix has built-in credential management, so you don't have to worry about exposing your services authentication data, they will be filled-in automatically from the sevices' credentialds defined for the application in BlueMix.
- 4. Additional nodes in Node-RED on BlueMix are installed through cf and a specific procedure since there is no direct access to the npm package manager.
+3. Node-RED in BlueMix has built-in credential management, so you don't have to worry about exposing your services authentication data, they will be filled-in automatically from the sevices' credentialds defined for the application in BlueMix.
+4. Additional nodes in Node-RED on BlueMix are installed through cf and a specific procedure since there is no direct access to the npm package manager.
 
 ## Language Translation
 
@@ -63,15 +63,15 @@ In this first exercise, we will show how to simply produce a `.wav` file from in
 
 The first part of the flow will take text input from a web invocation and return the spoken text `.wav` file:
 
-	A. Create a new flow, let's call it `TTS Web`
-	B. Add an `HTTP input` node to collect the incoming speech request. Set the `URL` property of this node to `/tts/sayit` This URL will be exposed below our BlueMix main URL.
-	When invoked with query parameters such as `?text_to_say=Hello`, they will be added as properties on the `msg` object. 
-	C. Add a `Switch` node to extract the query parameter and set it as the payload. The TTS node uses the text in the `msg.payload` as input.
-	D. Now add a `Watson TTS` node. This node will generate the binary `wav` stream content to the `msg.speech` property.
-	E. Add another `Switch` node to extract the `msg.speech` and place it in `msg.payload`.
-	F. Finally, add a `HTTP response` node. This node will simply return what's in the payload to the HTTP response.
+1. Create a new flow, let's call it `TTS Web`
+2. Add an `HTTP input` node to collect the incoming speech request. Set the `URL` property of this node to `/tts/sayit` This URL will be exposed below our BlueMix main URL.
+When invoked with query parameters such as `?text_to_say=Hello`, they will be added as properties on the `msg` object. 
+3. Add a `Switch` node to extract the query parameter and set it as the payload. The TTS node uses the text in the `msg.payload` as input.
+4. Now add a `Watson TTS` node. This node will generate the binary `wav` stream content to the `msg.speech` property.
+5. Add another `Switch` node to extract the `msg.speech` and place it in `msg.payload`.
+6. Finally, add a `HTTP response` node. This node will simply return what's in the payload to the HTTP response.
 	
-Try the flow: Open a new tab or window in your browser, and direct it to `/tts/sayit?text_to_say=Hello`
+Now try the flow: Open a new tab or window in your browser, and direct it to `/tts/sayit?text_to_say=Hello`
 This should prompt you to save a file. Store it with the `.wav` extension on your local file system. 
 Then locate that file from windows explorer and open it with Windows Media Player.
 
