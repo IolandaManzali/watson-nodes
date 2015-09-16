@@ -78,10 +78,16 @@ The properties of the TTS node will let you select the Language and Voice to use
 6. Finally, add a  ![`HTTP Response`](images/node-red/HTTPResponse.png) node. This node will simply return what's in the payload to the HTTP response.
 The completed flow should look like:
 ![TTS Lab 1 ScreenShot 5](images/TTS/TTS-Lab-5.png)
-	
-Now try the flow: Open a new tab or window in your browser, and direct it to `/tts/sayit?text_to_say=Hello`
-This should prompt you to save a file. Store it with the `.wav` extension on your local file system. 
-Then locate that file from windows explorer and open it with Windows Media Player.
+The flow code for this is in [TTS-Lab-Basic](flows/TTS/TTS-Lab-Basic.json)
+```
+[{"id":"ba6b02ff.ca0198","type":"http in","name":"","url":"/tts/sayit","method":"get","swaggerDoc":"","x":74.19999694824219,"y":64.19999694824219,"z":"24bf0254.aa8b26","wires":[["5c1ceeb9.5744b"]]},{"id":"5c1ceeb9.5744b","type":"change","name":"text to payload","rules":[{"t":"set","p":"payload","to":"msg.payload.text_to_say"}],"action":"","property":"","from":"","to":"","reg":false,"x":231.1999969482422,"y":24.199996948242188,"z":"24bf0254.aa8b26","wires":[["e3510257.ea6e78"]]},{"id":"e3510257.ea6e78","type":"watson-text-to-speech","name":"","lang":"english","voice":"en-US_MichaelVoice","x":263.20001220703125,"y":89.19999694824219,"z":"24bf0254.aa8b26","wires":[["16f20e6f.d935c2"]]},{"id":"16f20e6f.d935c2","type":"change","name":"speech to payload","rules":[{"t":"set","p":"payload","to":"msg.speech"}],"action":"","property":"","from":"","to":"","reg":false,"x":343.20001220703125,"y":151.1999969482422,"z":"24bf0254.aa8b26","wires":[["9d08ab41.809e48"]]},{"id":"9d08ab41.809e48","type":"http response","name":"","x":415.20001220703125,"y":211.1999969482422,"z":"24bf0254.aa8b26","wires":[]}]
+```
+
+Now try the flow: Open a new tab or window in your browser, and direct it to `/http://xxxx.mybluemix.net/tts/sayit?text_to_say=Hello`
+This should prompt you to save a file. Depending on how your browser is configured, it may save it automatically or prompt for a name and location. In any case, store it with the `.wav` extension on your local file system. 
+Then locate that file from windows explorer and open it with Windows Media Player, turn your you should
 
 ### TTS Flow - enhancements
-The flow as designed has a few caveats. First, if the text_to_say query parameter is not set, the flow will throw an error and not complete. Second, the mime type for the returned audio file has not been set explicitly, which may cause some browsers not to be able to play the audio file properly.
+The flow as designed has a few caveats. First, if the `text_to_say` query parameter is not set, the flow will throw an error and not complete. Second, the mime type and name for the returned audio file has not been set explicitly, which may cause some browsers not to be able to play the audio file properly.
+
+So, 
