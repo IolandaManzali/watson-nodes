@@ -107,3 +107,4 @@ Flow for this can be found in [TTS-Lab-Basic](flows/TTS/TTS-Lab-Extension1.json)
 We will then want to add a MIME Type setting to the output audio file so that the browser will recognize the format and be able to play it directly.
 For this, we will use the `msg.headers` input to the `HTTP Response` node. Snce we already have a `change` node before the `HTTP Response`, we will simply add an additional rule that will set the `msg.header` to the value ``` [{ 'Content-Type', 'audio/wav'}, {'Content-Disposition', 'attachment; filename=text_to_say.Wav'}]```
 ![TTS Lab 1 ScreenShot X3](images/TTS/TTS-Lab-X3.png)
+Flow for this can be found in [TTS-Lab-Basic](flows/TTS/TTS-Lab-Extension2.json)
