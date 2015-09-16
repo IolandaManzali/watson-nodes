@@ -54,17 +54,18 @@ The Language Translation service enables you to translate text from one language
 The Watson text-To-Speech (TTS) service produces an audio file from literal text.
 The spoken text can be emitted with a choice of voices and languages.
 
-### Node-RED node
+### Node-RED Watson TTS node
 The Node-RED node provides a very easy wrapper node that takes a text string as input and produces a binary buffer holding the spoken text audio stream in `.wav` format.
 The selection of language and voice are made through  the node's properties editor.
 
-### TTS Flow - basics
+### Basic TTS Flow
 In this first exercise, we will show how to simply produce a `.wav` file from input text through a simple web page generated using a Node-RED flow.
 
 The first part of the flow will take text input from a web invocation and return the spoken text `.wav` file:
 
-1. Create a new flow, let's call it `TTS Web`
+1. Create a new flow, let's call it `TTS Web` 
 2. Add an `HTTP input` node to collect the incoming speech request. Set the `URL` property of this node to `/tts/sayit` This URL will be exposed below our BlueMix main URL.
+![ScreenShot](https://github.com/NodeREDWatson/Watson-Node-Red-Samples/blob/master/images/TTS/TTS-Lab-1.png)
 When invoked with query parameters such as `?text_to_say=Hello`, they will be added as properties on the `msg` object. 
 3. Add a `Switch` node to extract the query parameter and set it as the payload. The TTS node uses the text in the `msg.payload` as input.
 4. Now add a `Watson TTS` node. This node will generate the binary `wav` stream content to the `msg.speech` property.
