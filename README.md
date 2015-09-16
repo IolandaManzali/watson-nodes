@@ -66,8 +66,8 @@ The first part of the flow will take text input from a web invocation and return
 1. Create a new flow, let's call it `TTS Web` 
 2. Add an ![`HTTPInput`](images/node-red/HTTPInput.png) node to collect the incoming speech request. Set the `URL` property of this node to `/tts/sayit` This URL will be exposed below our BlueMix main URL.
 ![TTS Lab 1 ScreenShot 1](images/TTS/TTS-Lab-1.png)
-When invoked with query parameters such as `?text_to_say=Hello`, they will be added as properties on the `msg` object. 
-3. Add a ![`change`](images/node-red/change.png) node to extract the query parameter `text_to_say` and set it as the `payload`.
+When invoked with query parameters such as `?text_to_say=Hello`, they will be added as properties on the `msg.payload` object. 
+3. Add a ![`change`](images/node-red/change.png) node to extract the query parameter `msg.payload.text_to_say` and set it as the `msg.payload`.
 ![TTS Lab 1 ScreenShot 2](images/TTS/TTS-Lab-2.png)
 We do this because the TTS node uses the text in the `msg.payload` as input.
 4. Now add a ![`Watson TTS`](images/node-red/Watson-tts.png) node. This node will generate the binary `wav` stream content to the `msg.speech` property.
@@ -75,7 +75,7 @@ We do this because the TTS node uses the text in the `msg.payload` as input.
 The properties of the TTS node will let you select the Language and Voice to use.
 5. Add another ![`change`](images/node-red/change.png) node to extract the `msg.speech` and place it in `msg.payload`.
 ![TTS Lab 1 ScreenShot 4](images/TTS/TTS-Lab-4.png)
-6. Finally, add a  ![`HTTP Response`](images/node-red/HTTPResponse.png  node. This node will simply return what's in the payload to the HTTP response.
+6. Finally, add a  ![`HTTP Response`](images/node-red/HTTPResponse.png) node. This node will simply return what's in the payload to the HTTP response.
 The completed flow should look like:
 ![TTS Lab 1 ScreenShot 5](images/TTS/TTS-Lab-5.png)
 	
