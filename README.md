@@ -58,7 +58,6 @@ The spoken text can be emitted with a choice of voices and languages.
 The Node-RED node provides a very easy wrapper node that takes a text string as input and produces a binary buffer holding the spoken text audio stream in `.wav` format.
 The selection of language and voice are made through  the node's properties editor.
 
-
 ### TTS Flow
 In this first exercise, we will show how to simply produce a `.wav` file from input text through a simple web page generated using a Node-RED flow.
 
@@ -66,3 +65,4 @@ The first part of the flow will take text input from a web invocation and return
 
 A. Create a new flow, let's call it `TTS Web`
 B. Add an HTTP input node to collect the incoming speech request. Set the `URL` property of this node to `/tts/sayit`
+C.
