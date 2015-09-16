@@ -64,13 +64,20 @@ In this first exercise, we will show how to simply produce a `.wav` file from in
 The first part of the flow will take text input from a web invocation and return the spoken text `.wav` file:
 
 1. Create a new flow, let's call it `TTS Web` 
-2. Add an `HTTP input` node to collect the incoming speech request. Set the `URL` property of this node to `/tts/sayit` This URL will be exposed below our BlueMix main URL.
-![TTS Lab 1 ScreenShot](images/TTS/TTS-Lab-1.png)
+2. Add an ![`HTTPInput`](images/node-red/HTTPInput.png) node to collect the incoming speech request. Set the `URL` property of this node to `/tts/sayit` This URL will be exposed below our BlueMix main URL.
+![TTS Lab 1 ScreenShot 1](images/TTS/TTS-Lab-1.png)
 When invoked with query parameters such as `?text_to_say=Hello`, they will be added as properties on the `msg` object. 
-3. Add a `Switch` node to extract the query parameter and set it as the payload. The TTS node uses the text in the `msg.payload` as input.
-4. Now add a `Watson TTS` node. This node will generate the binary `wav` stream content to the `msg.speech` property.
-5. Add another `Switch` node to extract the `msg.speech` and place it in `msg.payload`.
-6. Finally, add a `HTTP response` node. This node will simply return what's in the payload to the HTTP response.
+3. Add a ![`change`](images/node-red/change.png) node to extract the query parameter `text_to_say` and set it as the `payload`.
+![TTS Lab 1 ScreenShot 2](images/TTS/TTS-Lab-2.png)
+We do this because the TTS node uses the text in the `msg.payload` as input.
+4. Now add a ![`Watson TTS`](images/node-red/Watson-tts.png) node. This node will generate the binary `wav` stream content to the `msg.speech` property.
+![TTS Lab 1 ScreenShot 3](images/TTS/TTS-Lab-3.png)
+The properties of the TTS node will let you select the Language and Voice to use.
+5. Add another ![`change`](images/node-red/change.png) node to extract the `msg.speech` and place it in `msg.payload`.
+![TTS Lab 1 ScreenShot 4](images/TTS/TTS-Lab-4.png)
+6. Finally, add a  ![`HTTP Response`](images/node-red/HTTPResponse.png  node. This node will simply return what's in the payload to the HTTP response.
+The completed flow should look like:
+![TTS Lab 1 ScreenShot 5](images/TTS/TTS-Lab-5.png)
 	
 Now try the flow: Open a new tab or window in your browser, and direct it to `/tts/sayit?text_to_say=Hello`
 This should prompt you to save a file. Store it with the `.wav` extension on your local file system. 
