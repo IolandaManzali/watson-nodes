@@ -58,11 +58,22 @@ The spoken text can be emitted with a choice of voices and languages.
 The Node-RED node provides a very easy wrapper node that takes a text string as input and produces a binary buffer holding the spoken text audio stream in `.wav` format.
 The selection of language and voice are made through  the node's properties editor.
 
-### TTS Flow
+### TTS Flow - basics
 In this first exercise, we will show how to simply produce a `.wav` file from input text through a simple web page generated using a Node-RED flow.
 
 The first part of the flow will take text input from a web invocation and return the spoken text `.wav` file:
 
-A. Create a new flow, let's call it `TTS Web`
-B. Add an HTTP input node to collect the incoming speech request. Set the `URL` property of this node to `/tts/sayit`
-C.
+	A. Create a new flow, let's call it `TTS Web`
+	B. Add an `HTTP input` node to collect the incoming speech request. Set the `URL` property of this node to `/tts/sayit` This URL will be exposed below our BlueMix main URL.
+	When invoked with query parameters such as `?text_to_say=Hello`, they will be added as properties on the `msg` object. 
+	C. Add a `Switch` node to extract the query parameter and set it as the payload. The TTS node uses the text in the `msg.payload` as input.
+	D. Now add a `Watson TTS` node. This node will generate the binary `wav` stream content to the `msg.speech` property.
+	E. Add another `Switch` node to extract the `msg.speech` and place it in `msg.payload`.
+	F. Finally, add a `HTTP response` node. This node will simply return what's in the payload to the HTTP response.
+	
+Try the flow: Open a new tab or window in your browser, and direct it to `/tts/sayit?text_to_say=Hello`
+This should prompt you to save a file. Store it with the `.wav` extension on your local file system. 
+Then locate that file from windows explorer and open it with Windows Media Player.
+
+### TTS Flow - enhancements
+The flow as designed has a few caveats. First, if the text_to_say query parameter is not set, the flow will throw an error and not complete. Second, the mime type for the returned audio file has not been set explicitly, which may cause some browsers not to be able to play the audio file properly.
