@@ -74,7 +74,7 @@ We do this because the TTS node uses the text in the `msg.payload` as input.
 ![TTS Lab 1 ScreenShot 3](images/TTS/TTS-Lab-3.png)
 
 The properties of the TTS node will let you select the Language and Voice to use.
-5. Add another ![`change`](images/node-red/change.png) node to extract the `msg.speech` and place it in `msg.payload`.
+5. Add another ![`change`](images/node-red/change.png) node to extract the `msg.speech` and place it in `msg.payload`. We will also set the `HTTP response headers` by setting the `msg.headers` to the literal string value `[{ 'Content-Type', 'audio/wav'}]`. This is required in order to let browsers know that this is an audio file and not HTML.
 ![TTS Lab 1 ScreenShot 4](images/TTS/TTS-Lab-4.png)
 6. Finally, add a  ![`HTTP Response`](images/node-red/HTTPResponse.png) node. This node will simply return what's in the payload to the HTTP response.
 The completed flow should look like:
@@ -92,19 +92,17 @@ _Now try the flow:_
 Depending on how your browser is configured, it may save it automatically or prompt for a name and location. In any case, store or rename it with the `.wav` extension on your local file system. 
 * Then locate that file from windows explorer and open it with Windows Media Player, turn your you should
 
-### TTS Flow - enhancements
-The flow as designed has a few caveats. First, if the `text_to_say` query parameter is not set, the flow will throw an error and not complete. Second, the mime type and name for the returned audio file has not been set explicitly, which may cause some browsers not to be able to play the audio file properly.
+### TTS Flow - enhancements: Input Parameter Checking
+This flow has a caveat, which is that the flow will fail when the `text_to_say` query parameter is not set.
 
-#### Input Parameter Checking
 So, we will introduce a `switch` node between the `[get]` and `change` nodes. This node will check if `msg.payload.text_to_say` is set, and otherwise divert to a `template` node that will simply set the payload to a error text.
 ![TTS Lab 1 ScreenShot X1](images/TTS/TTS-Lab-X1.png)
 You'll notice that adding the second `otherwise` rule has created a second output handle for the `switch` node, we'll connect this to a `template` node and then to the `HTML Response` node.
 ![TTS Lab 1 ScreenShot X2](images/TTS/TTS-Lab-X2.png)
 The template node simply outputs a HTML message in a h1 header.
 Flow for this can be found in [TTS-Lab-Basic](flows/TTS/TTS-Lab-Extension1.json)
-
-#### MIME type setting
-We will then want to add a MIME Type setting to the output audio file so that the browser will recognize the format and be able to play it directly.
-For this, we will use the `msg.headers` input to the `HTTP Response` node. Snce we already have a `change` node before the `HTTP Response`, we will simply add an additional rule that will set the `msg.header` to the value ``` [{ 'Content-Type', 'audio/wav'}, {'Content-Disposition', 'attachment; filename=text_to_say.Wav'}]```
+The final flow will look like:
 ![TTS Lab 1 ScreenShot X3](images/TTS/TTS-Lab-X3.png)
-Flow for this can be found in [TTS-Lab-Basic](flows/TTS/TTS-Lab-Extension2.json)
+
+#### TTS Interactive Web UI
+As an extension, we can build a flow that will present a dialog to the user with a prompt to enter the text to say, and return a HTML page with an <audio> tag which will play the generated audio.
