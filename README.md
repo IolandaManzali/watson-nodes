@@ -305,8 +305,7 @@ The Alchemy Vision service allows to analyse the contents of an image and extrac
 The Node-RED ![`Alchemy Image Analysis`](images/node-red/Alchemy_Image_Analysis.png) node provides a very easy wrapper node that takes an image URL or binary stream as input, and produces a array of detected faces , age, bounding box, gender and name.
 
 ### Basic Alchemy Image Analysis Flow
-In this exercise, we will show how to simply generate the face recognition data from an image URL. The structure of the flow is very similar to the Watson Visual Recognition flow.
-
+In this exercise, we will show how to simply generate the face recognition data from an image URL. The structure of the flow is very similar to the Watson Visual Recognition flow.  
 The flow will present a simple Web page with a text field where to input the image's URL, then submit it to Alchemy Image Analysis, and output the faces that have been found on the reply Web page.
 
 ![AlchVis-Lab-AlchemyFaceDetectionFlow.png](images/AlchVision/AlchVis-Lab-AlchemyFaceDetectionFlow.png)
@@ -355,5 +354,12 @@ The nodes required to build this flow are:
 ```
 ![AlchVis-Lab-TemplateReport-Node-Props](images/AlchVision/AlchVis-Lab-TemplateReport-Node-Props.png)
 
-To run the web page, point your browser to  `/http://xxxx.mybluemix.net/alchvision` and enter the URL of some  image. The URL of the listed images can be copied to clipboard and pasted into the text field.
+To run the web page, point your browser to  `/http://xxxx.mybluemix.net/alchvision` and enter the URL of some  image. The URL of the listed images can be copied to clipboard and pasted into the text field.  
 The complete flow is available at [AlchVis-Lab-WebPage](flows/AlchVision/AlchVis-Lab-WebPage.json).
+
+#### Extended Alchemy Vision Face Detection Lab:
+The Alchemy Vision API also yields the bounding rectangle for the detected faces, so we can enhance  the HTML page with some JavaScript and canvas to highlight these. The HTML page code for the 'Report Faces' template would need to be updated with the following snippet:  
+```HTML
+```
+This enhanced flow is available at  
+[AlchVis-Lab-WebPageFaceBoxes](flows/AlchVision/AlchVis-Lab-WebPageFaceBoxes.json).
