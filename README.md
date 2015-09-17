@@ -74,11 +74,15 @@ We do this because the TTS node uses the text in the `msg.payload` as input.
 ![TTS Lab 1 ScreenShot 3](images/TTS/TTS-Lab-3.png)
 
 The properties of the TTS node will let you select the Language and Voice to use.
+
 5. Add another ![`change`](images/node-red/change.png) node to extract the `msg.speech` and place it in `msg.payload`. We will also set the `HTTP response headers` by setting the `msg.headers` to the literal string value `[{ 'Content-Type', 'audio/wav'}]`. This is required in order to let browsers know that this is an audio file and not HTML.
+
 ![TTS Lab 1 ScreenShot 4](images/TTS/TTS-Lab-4.png)
+
 6. Finally, add a  ![`HTTP Response`](images/node-red/HTTPResponse.png) node. This node will simply return what's in the payload to the HTTP response.
 The completed flow should look like:
 ![TTS Lab 1 ScreenShot 5](images/TTS/TTS-Lab-5.png)
+
 The flow code for this is in [TTS-Lab-Basic](flows/TTS/TTS-Lab-Basic.json), or can be copied from the snippet below:
 
 ```
