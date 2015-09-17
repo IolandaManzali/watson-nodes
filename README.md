@@ -83,11 +83,7 @@ The properties of the TTS node will let you select the Language and Voice to use
 The completed flow should look like:
 ![TTS Lab 1 ScreenShot 5](images/TTS/TTS-Lab-5.png)
 
-The flow code for this is in [TTS-Lab-Basic](flows/TTS/TTS-Lab-Basic.json), or can be copied from the snippet below:
-
-```
-[{"id":"ba6b02ff.ca0198","type":"http in","name":"","url":"/tts/sayit","method":"get","swaggerDoc":"","x":74.19999694824219,"y":64.19999694824219,"z":"24bf0254.aa8b26","wires":[["5c1ceeb9.5744b"]]},{"id":"5c1ceeb9.5744b","type":"change","name":"text to payload","rules":[{"t":"set","p":"payload","to":"msg.payload.text_to_say"}],"action":"","property":"","from":"","to":"","reg":false,"x":231.1999969482422,"y":24.199996948242188,"z":"24bf0254.aa8b26","wires":[["e3510257.ea6e78"]]},{"id":"e3510257.ea6e78","type":"watson-text-to-speech","name":"","lang":"english","voice":"en-US_MichaelVoice","x":263.20001220703125,"y":89.19999694824219,"z":"24bf0254.aa8b26","wires":[["16f20e6f.d935c2"]]},{"id":"16f20e6f.d935c2","type":"change","name":"speech to payload","rules":[{"t":"set","p":"payload","to":"msg.speech"}],"action":"","property":"","from":"","to":"","reg":false,"x":343.20001220703125,"y":151.1999969482422,"z":"24bf0254.aa8b26","wires":[["9d08ab41.809e48"]]},{"id":"9d08ab41.809e48","type":"http response","name":"","x":415.20001220703125,"y":211.1999969482422,"z":"24bf0254.aa8b26","wires":[]}]
-```
+The flow code for this is in [TTS-Lab-Basic](flows/TTS/TTS-Lab-Basic.json).
 
 _Now try the flow:_
 
