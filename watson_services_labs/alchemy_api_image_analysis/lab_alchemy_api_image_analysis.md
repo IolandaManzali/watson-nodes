@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #  Node-RED Alchemy Vision (Image Analysis) Lab
 ## Overview
 The Alchemy Vision service allows to analyse the contents of an image and extract features from it. The Face Detection service is able to identify multiple faces within the image, and determine their gender and age with a confidence score, and identify celebrities.
@@ -64,3 +65,8 @@ The Alchemy Vision API also yields the bounding rectangle for the detected faces
 ```
 This enhanced flow is available at  
 [AlchVis-Lab-WebPageFaceBoxes](flows/AlchVision/AlchVis-Lab-WebPageFaceBoxes.json).
+=======
+#Alchemy API Image Analysis
+
+Lab instructions TO DO
+>>>>>>> master
