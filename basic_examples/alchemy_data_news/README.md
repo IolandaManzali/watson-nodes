@@ -1,4 +1,4 @@
-#Watson Alchemy New for Node-RED
+#Watson Alchemy News for Node-RED
 ##Overview
 Alchemy News gives access to a hyper-relevant, curated dataset of news and blogs that has been enriched with AI.
 AlchemyData News indexes 250k to 300k English language news and blog articles every day with historical search available for the past 60 days.
@@ -24,3 +24,4 @@ It is also possible to write custom complex queries by following the directions 
 The output for this second query is the one displayed below.
 
 ![Configuration input](images/nw_output2.png)
+
