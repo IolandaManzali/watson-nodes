@@ -7,6 +7,11 @@ as a Watson Developer Cloud contribution to Node-RED and needs to be installed.
 ## Installation of the Dialog Node
 Follow the instructions at [watson contribution nodes](/watson_contribution_nodes/README.md) 
 to install the dialog node into your Bluemix instance of Node-RED. 
+*Notice* : in the Watson Node-RED Boilerplate this installation have been already done.
+
+## On Bluemix
+
+If you are using Node-RED on Bluemix, go to your Node-RED app and click 'add a service or API' This will open a new window where you can select the Watson Dialog service. Then you click on 'Use' a screen will show which asks for a restage, click on 'yes' and wait a minute. When the application is started click on the Url to go to your Node-RED application.
 
 ## List available dialogs
 The first part of the flow is to generate a list of the available dialogs. 
@@ -100,6 +105,29 @@ Where you will be able to see the response from the dialog service.
 
 ![dialog input converse](images/dialog_converse_results.png)
 
+## Delete a Dialog
+This mode enables you to delete a Dialog given its Dialog ID. To do so, just add the Dialog ID in the node configuration.
+
+![delete a dialog : input](images/dialog_delete_input.png)
+
+Send the output to a debug node
+
+![delete a dialog : output](images/dialog_delete_output.png)
+
+## Delete all Dialogs
+This mode enables you to delete all Dialogs associated to the underlying Watson Dialog service instance. <b>Use it with caution as the deletion is permanent</b>
+
+![delete all dialogs : input](images/dialog_delete_all_input.png)
+
+Send the output to a debug node
+
+![delete all dialogs : output](images/dialog_delete_all_output.png)
+
+# Available Flows :
+- [Dialog Flow](dialog_flow.json) : illustrates all availables Dialog Node Modes, and proposes an automated Simulation of a Dialog Creation, Starting and following a Conversation.
+
+![Dialog Flow : complete ](images/dialog_final_flow.png)
+
+<n>Notice</b> : you can also use Dropbox instead of using the HTTP Request node : How to setup your Node-RED with [Dropbox nodes](https://github.com/watson-developer-cloud/node-red-labs/tree/master/utilities/dropbox_setup)
 
 
-The completed flow is available at [Dialog Flow](dialog_flow.json)

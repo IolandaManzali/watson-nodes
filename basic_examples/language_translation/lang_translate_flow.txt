@@ -1,1 +1,55 @@
-[{"id":"b7d18006.d9984","type":"watson-translate","name":"Translate to another Language","srclang":"en","destlang":"fr","domain":"conversational","x":437,"y":547,"z":"6f0da98d.8b486","wires":[["7b949bc6.956bf4"]]},{"id":"f0b18982.2b205","type":"inject","name":"Inject some text","topic":"","payload":"\"Node-Red\" & Watson is a strong combination","payloadType":"string","repeat":"","crontab":"","once":false,"x":199,"y":547,"z":"6f0da98d.8b486","wires":[["b7d18006.d9984"]]},{"id":"7b949bc6.956bf4","type":"debug","name":"translated text","active":false,"console":"false","complete":"payload","x":669,"y":547,"z":"6f0da98d.8b486","wires":[]}]
+[  
+   {  
+      "id":"a124385f.c46268",
+      "type":"inject",
+      "z":"8164d243.b4fb2",
+      "name":"Translate",
+      "topic":"",
+      "payload":"Hello! My name is Watson and here is an example of a translated text.",
+      "payloadType":"str",
+      "repeat":"",
+      "crontab":"",
+      "once":false,
+      "x":100,
+      "y":80,
+      "wires":[  
+         [  
+            "38ca07f1.af65a8"
+         ]
+      ]
+   },
+   {  
+      "id":"38ca07f1.af65a8",
+      "type":"watson-translate",
+      "z":"8164d243.b4fb2",
+      "name":"",
+      "srclang":"en",
+      "destlang":"fr",
+      "domain":"news",
+      "basemodel":"",
+      "action":"translate",
+      "filetype":"forcedglossary",
+      "trainid":"",
+      "x":400,
+      "y":80,
+      "wires":[  
+         [  
+            "7f2c697a.221228"
+         ]
+      ]
+   },
+   {  
+      "id":"7f2c697a.221228",
+      "type":"debug",
+      "z":"8164d243.b4fb2",
+      "name":"Translated text",
+      "active":true,
+      "console":"false",
+      "complete":"payload",
+      "x":900,
+      "y":80,
+      "wires":[  
+
+      ]
+   }
+]
