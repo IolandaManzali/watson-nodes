@@ -82,7 +82,7 @@ You're now good to go: make sure to connect your node, deploy and click on the i
 
 The complete flow can be found here: [Text To Speech on Bluemix lab flow using the Dropbox node](s2t_bluemix_box_flow.json)
 
-```
+
 ## OPTIONAL On a stand-alone system
 
 You need to have a local instance of Node-RED with IBM nodes available. If you don't have that yet, you can go [here](/introduction_to_node_red/README.md).
