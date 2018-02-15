@@ -28,6 +28,7 @@ In this example we will inject a string using the standard Inject node.
 
 ### Use an Inject node as input
 Start by adding an inject node to the canvas. Double-click the node, then change the input type to string and add your required text. 
+
 ![`LIinject`](images/language-inject.jpg)
 
 ### Add the Language Identification node
@@ -35,6 +36,7 @@ Drag and drop a Language Identification node from the nodes palette, and wire it
 
 ### Add a debug node
 Drag and drop a debug node from the nodes palette, and wire it to your Language Identification node. Double-click the node, then change the output to msg.lang. 
+
 ![`LIdebug`](images/language-identified-debug.jpg)
 
 The final flow should look like 
