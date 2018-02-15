@@ -1,6 +1,6 @@
-#Lab: Watson Language Identification with Node-RED
+# Lab: Watson Language Identification with Node-RED
 
-##Overview
+## Overview
 
 The Language Translator service can be used to identify one or more languages in text. The input and output for identification by the service are defined as follows:
  - Input: The input text to identify language against, in UTF-8 format.
