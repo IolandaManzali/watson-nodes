@@ -17,10 +17,10 @@ the service will also provide a confidence level of it's result.
 In this exercise we have 5 basic flows using the Identify or Translator nodes broken into 3 sections
 1. Translate text
 2. Identify the language
-3. Custom Models
-  * Create a custom model
-  * Get the Status of a model
-  * Delete an existing model
+3. Managing Custom Models 
+   * Create a custom model
+   * Get the Status of a model
+   * Delete an existing model
 
 ## Building the Translator flow 
 
@@ -74,22 +74,25 @@ This example will have 3 inputs with different languages. The language identify 
 ![`identify-flow`](images/identify-flow.jpg)
 
 ### First inject node
-Add an inject node to the canvas. Double-click the node, then change the name to identify the block, change the input type to string   and add your required text. 
+Add an inject node to the canvas. Double-click the node, then change the name to identify the block, change the input type to string   and add your required text. I have used the English text:
 
-![`if-en-inject`](images/if-en-inject.jpg) I have used the English text:
 > Give me one good reason why I should never make a change
 
-### Second inject node
-Add another inject node to the canvas. Double-click the node, then change the name to identify the block, change the input type to string and add your required text. 
+![`if-en-inject`](images/if-en-inject.jpg) 
 
-![`if-af-inject`](images/if-af-inject.jpg) I have used the Afrikaans text:
+### Second inject node
+Add another inject node to the canvas. Double-click the node, then change the name to identify the block, change the input type to string and add your required text. I have used the Afrikaans text: 
+
 > As jy in die bende wil wees, moet jy cool wees, soos pappa!
 
-### Third inject node
-Add another inject node to the canvas. Double-click the node, then change the name to identify the block, change the input type to string and add your required text. 
+![`if-af-inject`](images/if-af-inject.jpg) 
 
-![`if-it-inject`](images/if-it-inject.jpg) I have used the Italian text:
+### Third inject node
+Add another inject node to the canvas. Double-click the node, then change the name to identify the block, change the input type to string and add your required text. I have used the Italian text: 
+
 > Dovresti solo spegnere le dannate porte!
+
+![`if-it-inject`](images/if-it-inject.jpg) 
 
 ### Add the Language Identification node
 Drag and drop a Language Identification node from the nodes palette, and wire it to your input node. It does not require any modification.
