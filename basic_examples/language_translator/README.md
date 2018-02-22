@@ -186,7 +186,7 @@ Drag and drop a debug node and let it set to msg.payload. This will only return 
 
 - Building the Translator flow ![`translator-flow`](translator-flow.txt)
 - Building the Identify flow ![`identify-flow`](identify-flow.txt) 
-- Building flows to customize your domain ![`custom-models`](custom-models.txt)
+- Building flows to customize your domain ![`training-flow`](training-flow.txt)
 
 ## Language Translator Documentation
 
